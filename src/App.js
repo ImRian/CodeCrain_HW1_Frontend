@@ -1,18 +1,17 @@
-import React, { useState } from 'react';
-import SwiperComponent from './components/SwiperComponent';
-import NoticeList from './components/NoticeList';
-import SearchBox from './components/SearchBox';
-import Divider from './components/Divider';
+import React, { useState } from "react";
+import SwiperComponent from "./components/SwiperComponent";
+import SearchBox from "./components/SearchBox";
+import Divider from "./components/Divider";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import AppRouter from "./router/AppRouter";
+
 function App() {
-  const [searchTerm, setSearchTerm] = useState('');
+  const [setSearchTerm] = useState('');
+
   return (
     <div>
-      <SwiperComponent />
-      <Divider/>
-      <SearchBox onSearch={setSearchTerm} />
-      <NoticeList searchTerm={searchTerm} />
+      <AppRouter />
     </div>
   );
 }

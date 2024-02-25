@@ -1,6 +1,11 @@
 import React, { useEffect, useState } from "react";
 /** @jsxImportSource @emotion/react */
 import styled from "@emotion/styled";
+import { useNavigate } from "react-router-dom";
+import NoticeDetail from "./NoticeDetail";
+import SwiperComponent from "./SwiperComponent";
+import Divider from "./Divider";
+import SearchBox from "./SearchBox";
 
 const Container = styled.div`
   display: flex;
@@ -11,8 +16,8 @@ const Container = styled.div`
 `;
 
 const Table = styled.table`
-width: "940px",
-  border-collapse: collapse;
+  width: "940px",
+  border-collapse:  separate;
 
   td {
     border-bottom: 1px solid #ddd;
@@ -71,13 +76,12 @@ const NoticeList = () => {
   const [totalNotices, setTotalNotices] = useState(0);
   const [currentPage, setCurrentPage] = useState(1);
   const [noticesPerPage] = useState(4);
+  const [searchTerm, setSearchTerm] = useState(""); // 검색 용어 상태 관리
   const totalPages = Math.ceil(totalNotices / noticesPerPage);
-  const [selectedNotice, setSelectedNotice] = useState(null);
-  const handleNoticeClick = (noticeId) => {
-    // 주어진 ID와 일치하는 공지사항을 찾습니다.
-    const noticeDetails = notices.find((notice) => notice.id === noticeId);
-    // 찾은 공지사항으로 상태를 업데이트합니다.
-    setSelectedNotice(noticeDetails);
+  const [selectedNoticeId] = useState(null);
+  const navigate = useNavigate();
+  const handleRowClick = (noticeId) => {
+    navigate(`/notice/${noticeId}`);
   };
 
   useEffect(() => {
@@ -110,53 +114,59 @@ const NoticeList = () => {
   };
 
   return (
-    <Container>
-      <Table>
-        <thead>
-          <tr>
-            <th>번호</th>
-            <th>제목</th>
-            <th>등록일</th>
-          </tr>
-        </thead>
-        <tbody>
-          {notices.map((notice) => (
-            <tr key={notice.id}>
-              <td>{notice.id}</td>
-              <td className="title-cell">{notice.title}</td>
-              <td>{notice.date_posted.split("T")[0].replace(/-/g, ".")}</td>
+    <>
+      <SwiperComponent />
+      <Divider />
+      <SearchBox onSearch={setSearchTerm} />
+      <Container>
+        <Table>
+          <thead>
+            <tr>
+              <th>번호</th>
+              <th>제목</th>
+              <th>등록일</th>
             </tr>
-          ))}
-        </tbody>
-      </Table>
-      <PaginationContainer>
-        <PageNumber
-          onClick={() => setCurrentPage(1)}
-          disabled={currentPage === 1}
-        >
-          {"<<"}
-        </PageNumber>
-        <PageNumber
-          onClick={() => setCurrentPage(currentPage - 1)}
-          disabled={currentPage === 1}
-        >
-          {"<"}
-        </PageNumber>
-        {renderPageNumbers()}
-        <PageNumber
-          onClick={() => setCurrentPage(currentPage + 1)}
-          disabled={currentPage === totalPages || totalPages === 0}
-        >
-          {">"}
-        </PageNumber>
-        <PageNumber
-          onClick={() => setCurrentPage(totalPages)}
-          disabled={currentPage === totalPages || totalPages === 0}
-        >
-          {">>"}
-        </PageNumber>
-      </PaginationContainer>
-    </Container>
+          </thead>
+          <tbody>
+            {notices.map((notice) => (
+              <tr key={notice.id} onClick={() => handleRowClick(notice.id)}>
+                <td>{notice.id}</td>
+                <td className="title-cell">{notice.title}</td>
+                <td>{notice.date_posted.split("T")[0].replace(/-/g, ".")}</td>
+              </tr>
+            ))}
+          </tbody>
+        </Table>
+        <PaginationContainer>
+          <PageNumber
+            onClick={() => setCurrentPage(1)}
+            disabled={currentPage === 1}
+          >
+            {"<<"}
+          </PageNumber>
+          <PageNumber
+            onClick={() => setCurrentPage(currentPage - 1)}
+            disabled={currentPage === 1}
+          >
+            {"<"}
+          </PageNumber>
+          {renderPageNumbers()}
+          <PageNumber
+            onClick={() => setCurrentPage(currentPage + 1)}
+            disabled={currentPage === totalPages || totalPages === 0}
+          >
+            {">"}
+          </PageNumber>
+          <PageNumber
+            onClick={() => setCurrentPage(totalPages)}
+            disabled={currentPage === totalPages || totalPages === 0}
+          >
+            {">>"}
+          </PageNumber>
+        </PaginationContainer>
+        {selectedNoticeId && <NoticeDetail noticeId={selectedNoticeId} />}
+      </Container>
+    </>
   );
 };
 
