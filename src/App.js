@@ -1,12 +1,18 @@
-// src/App.js
-import React from 'react';
+import React, { useState } from 'react';
+import SwiperComponent from './components/SwiperComponent';
 import NoticeList from './components/NoticeList';
-
+import SearchBox from './components/SearchBox';
+import Divider from './components/Divider';
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 function App() {
+  const [searchTerm, setSearchTerm] = useState('');
   return (
-    <div className="App">
-      <h1>공지사항</h1>
-      <NoticeList />
+    <div>
+      <SwiperComponent />
+      <Divider/>
+      <SearchBox onSearch={setSearchTerm} />
+      <NoticeList searchTerm={searchTerm} />
     </div>
   );
 }
