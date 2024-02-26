@@ -13,7 +13,6 @@ function Comments({ noticeId }) {
         );
         const data = await response.json();
 
-        // 댓글 데이터를 날짜와 시간 기준으로 내림차순으로 정렬합니다.
         const sortedComments = data.comments.sort((a, b) => {
           if (a.created_date === b.created_date) {
             return a.created_time.localeCompare(b.created_time);
@@ -37,7 +36,6 @@ function Comments({ noticeId }) {
   if (isLoading) return <p>댓글을 불러오는 중...</p>;
   if (!comments.length) return <p>댓글이 없습니다.</p>;
 
-  // 날짜 포맷을 조정하는 함수입니다.
   const formatDate = (dateString) => {
     const date = new Date(dateString);
     const formattedDate = `${date.getFullYear()}.${String(
@@ -46,17 +44,16 @@ function Comments({ noticeId }) {
     return formattedDate;
   };
 
-  // 닉네임의 뒷부분을 **로 처리하는 함수입니다.
   const formatNickname = (nickname) => {
     if (nickname.length > 2) {
       return `${nickname.slice(0, -2)}**`;
     }
-    return nickname; // 닉네임이 2자 이하인 경우 처리하지 않습니다.
+    return nickname;
   };
 
   return (
     <div>
-      <h3>댓글</h3>
+      <h3>댓글 ({comments.length})</h3>
       <ul>
         {comments.map((comment) => (
           <li key={comment.id}>
