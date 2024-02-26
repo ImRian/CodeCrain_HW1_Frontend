@@ -11,7 +11,7 @@ const pageContainerStyle = css`
   display: flex;
   flex-direction: column;
   align-items: left;
-  padding: 40px 250px 0px 250px;
+  padding: 40px 250px 40px 250px;
   max-width: 1920px;
   min-width: 480px;
 `;
