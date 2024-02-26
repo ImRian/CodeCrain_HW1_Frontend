@@ -14,7 +14,7 @@ const SearchBox = ({ onSearch }) => {
       borderRadius: '14px', 
       padding: '10px',
       width: "940px",
-      margin: "0 auto" 
+   
     }}>
       <input
         type="text"

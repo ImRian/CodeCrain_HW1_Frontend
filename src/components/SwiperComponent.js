@@ -1,6 +1,6 @@
+/** @jsxImportSource @emotion/react */
 import React, { useState } from "react";
 import Slider from "react-slick";
-/** @jsxImportSource @emotion/react */
 import styled from "@emotion/styled";
 import banner1 from "../img/banner1.png";
 import banner2 from "../img/banner2.png";
@@ -70,7 +70,11 @@ const SwiperComponent = () => {
           <img src={banner} alt={`Banner ${index + 1}`} />
           <ProgressBarContainer>
             <ProgressBar>
-              <ProgressFill width={(currentSlide === index ? (index + 1) / totalSlides : 0) * 100} />
+              <ProgressFill
+                width={
+                  (currentSlide === index ? (index + 1) / totalSlides : 0) * 100
+                }
+              />
             </ProgressBar>
             <SlideIndicator className={currentSlide === index ? "active" : ""}>
               {`< ${index + 1} / ${totalSlides} >`}

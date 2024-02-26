@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
 /** @jsxImportSource @emotion/react */
+import React, { useEffect, useState } from "react";
 import styled from "@emotion/styled";
 import { useNavigate } from "react-router-dom";
 import NoticeDetail from "./NoticeDetail";
@@ -7,17 +7,20 @@ import SwiperComponent from "./SwiperComponent";
 import Divider from "./Divider";
 import SearchBox from "./SearchBox";
 
-const Container = styled.div`
+// 페이지 컨테이너 스타일
+const PageContainerStyle = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: center;
-  margin-top: 20px;
-  width: 100%;
+  align-items: left;
+  padding: 40px 250px 0px 250px;
+  max-width: 1920px;
+  min-width: 480px;
 `;
 
+// 테이블 스타일
 const Table = styled.table`
-  width: "940px",
-  border-collapse:  separate;
+  width: 940px;
+  border-collapse: separate;
 
   td {
     border-bottom: 1px solid #ddd;
@@ -36,12 +39,14 @@ const Table = styled.table`
   }
 `;
 
+// 페이지네이션 컨테이너 스타일
 const PaginationContainer = styled.div`
   display: flex;
   justify-content: center;
   margin-top: 20px;
 `;
 
+// 페이지 번호 버튼 스타일
 const PageNumber = styled.button`
   background: none;
   border: none;
@@ -50,6 +55,7 @@ const PageNumber = styled.button`
   margin: 0 5px;
   transition: background-color 0.3s ease, color 0.3s ease;
   color: #000;
+
   &:hover {
     background-color: #2776e1;
     border-radius: 100px;
@@ -116,9 +122,9 @@ const NoticeList = () => {
   return (
     <>
       <SwiperComponent />
-      <Divider />
-      <SearchBox onSearch={setSearchTerm} />
-      <Container>
+      <PageContainerStyle>
+        <Divider />
+        <SearchBox onSearch={setSearchTerm} />
         <Table>
           <thead>
             <tr>
@@ -165,7 +171,7 @@ const NoticeList = () => {
           </PageNumber>
         </PaginationContainer>
         {selectedNoticeId && <NoticeDetail noticeId={selectedNoticeId} />}
-      </Container>
+      </PageContainerStyle>
     </>
   );
 };
