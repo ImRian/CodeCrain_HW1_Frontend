@@ -7,11 +7,10 @@ import SwiperComponent from "./SwiperComponent";
 import Divider from "./Divider";
 import SearchBox from "./SearchBox";
 
-// 페이지 컨테이너 스타일
 const PageContainerStyle = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: left;
+  align-items: center;
   padding: 40px 250px 0px 250px;
   max-width: 1920px;
   min-width: 480px;
@@ -19,8 +18,8 @@ const PageContainerStyle = styled.div`
 
 // 테이블 스타일
 const Table = styled.table`
-  width: 940px;
-  border-collapse: separate;
+  width: 100%;
+  border-collapse: collapse;
 
   td {
     border-bottom: 1px solid #ddd;
@@ -39,14 +38,13 @@ const Table = styled.table`
   }
 `;
 
-// 페이지네이션 컨테이너 스타일
 const PaginationContainer = styled.div`
   display: flex;
   justify-content: center;
-  margin-top: 20px;
+  margin-top: 50px;
+  margin-bottom: 60px;
 `;
 
-// 페이지 번호 버튼 스타일
 const PageNumber = styled.button`
   background: none;
   border: none;

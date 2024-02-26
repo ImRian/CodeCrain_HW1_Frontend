@@ -13,10 +13,11 @@ const containerStyle = css`
   padding-bottom: 10px;
   border-bottom: 1px solid black;
   margin-bottom: 20px;
+  width: 100%;
 `;
 
 const iconStyle = css`
-  width: 24px; // 아이콘 크기 조절
+  width: 24px; 
   height: 24px;
 `;
 

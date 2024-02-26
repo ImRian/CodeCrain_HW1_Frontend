@@ -11,38 +11,45 @@ const ImageContainer = styled.div`
   img {
     width: 100%;
     height: auto;
+    @media (min-width: 480px) and (max-width: 1920px) {
+      max-width: 100%; // 이미지 최대 너비를 100%로 설정하여 여백 문제 해결
+    }
   }
 `;
 
 const ProgressBarContainer = styled.div`
   position: absolute;
-  bottom: 10px;
-  left: 0;
-  width: 100%;
+  bottom: 60px;
+  left: 60px;
+  width: 334px;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content: left;
+  align-items: left;
+  flex-direction: column;
 `;
 
 const ProgressBar = styled.div`
-  background-color: #ccc;
+  background-color: gray;
   height: 2px;
-  width: 100px;
+  width: 400px;
   position: relative;
   margin-right: 10px;
+  @media (min-width: 480px) and (max-width: 1920px) {
+    width: 80%; // 반응형으로 조절 가능
+  }
 `;
 
 const ProgressFill = styled.div`
-  background-color: #000;
+  background-color: white;
   height: 100%;
   width: ${(props) => props.width}%;
 `;
 
 const SlideIndicator = styled.span`
-  color: #ccc;
+text-align:right;
   &.active {
-    font-weight: Bold;
-    color: #000;
+    font-weight: Medium;
+    color: white;
   }
 `;
 
@@ -57,10 +64,26 @@ const SwiperComponent = () => {
     slidesToShow: 1,
     slidesToScroll: 1,
     autoplay: true,
-    autoplaySpeed: 3000,
+    autoplaySpeed: 5000,
     beforeChange: (oldIndex, newIndex) => {
       setCurrentSlide(newIndex);
     },
+    responsive: [
+      {
+        breakpoint: 1920,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        },
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        },
+      },
+    ],
   };
 
   return (
