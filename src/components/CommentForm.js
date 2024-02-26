@@ -37,7 +37,9 @@ function CommentsForm({ noticeId, onCommentAdded }) {
       if (response.ok) {
         setNickname("");
         setComment("");
-        onCommentAdded(); // 댓글 추가 후 댓글 목록 새로고침 함수 호출
+        if (typeof onCommentAdded === "function") {
+          onCommentAdded(); // 함수가 맞을 경우에만 호출
+        }
       } else {
         alert("댓글을 추가하는 데 실패했습니다.");
       }
