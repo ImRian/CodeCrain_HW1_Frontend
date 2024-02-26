@@ -11,9 +11,11 @@ const PageContainerStyle = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 40px 250px 40px 250px;
+  padding: 40px 5%; /* 수정된 부분 */
   max-width: 1920px;
   min-width: 480px;
+  width: 100%; /* 추가된 부분 */
+  box-sizing: border-box; /* 추가된 부분 */
 `;
 
 // 테이블 스타일
@@ -23,12 +25,13 @@ const Table = styled.table`
 
   td {
     border-bottom: 1px solid #ddd;
-    padding: 16px;
+    padding: 8px; /* 수정된 부분 */
     text-align: center;
   }
 
   .title-cell {
     text-align: left;
+    padding: 8px; /* 추가된 부분 */
   }
 
   th {

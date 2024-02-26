@@ -1,5 +1,5 @@
 /** @jsxImportSource @emotion/react */
-import React, { useState } from "react";
+import React from "react";
 import Slider from "react-slick";
 import styled from "@emotion/styled";
 import banner1 from "../img/banner1.png";
@@ -9,11 +9,10 @@ import banner3 from "../img/banner3.png";
 const ImageContainer = styled.div`
   position: relative;
   img {
-    width: 100%;
+    width: 100%; // 변경된 부분: max-width를 width로 변경하여 항상 부모의 크기에 맞춤
     height: auto;
-    @media (min-width: 480px) and (max-width: 1920px) {
-      max-width: 100%; // 이미지 최대 너비를 100%로 설정하여 여백 문제 해결
-    }
+    min-width: 480px; // 최소 너비 유지
+    max-width: 1920px; // 최대 너비 유지
   }
 `;
 
@@ -31,12 +30,8 @@ const ProgressBarContainer = styled.div`
 const ProgressBar = styled.div`
   background-color: gray;
   height: 2px;
-  width: 400px;
+  width: 100%;
   position: relative;
-  margin-right: 10px;
-  @media (min-width: 480px) and (max-width: 1920px) {
-    width: 80%; // 반응형으로 조절 가능
-  }
 `;
 
 const ProgressFill = styled.div`
@@ -46,15 +41,15 @@ const ProgressFill = styled.div`
 `;
 
 const SlideIndicator = styled.span`
-text-align:right;
+  text-align: right;
   &.active {
-    font-weight: Medium;
+    font-weight: bold; // 변경된 부분: 'Medium'을 'bold'로 변경하여 실제 작동하는 속성 값으로 수정
     color: white;
   }
 `;
 
 const SwiperComponent = () => {
-  const [currentSlide, setCurrentSlide] = useState(0);
+  const [currentSlide, setCurrentSlide] = React.useState(0);
   const totalSlides = 3;
 
   const settings = {
@@ -68,22 +63,6 @@ const SwiperComponent = () => {
     beforeChange: (oldIndex, newIndex) => {
       setCurrentSlide(newIndex);
     },
-    responsive: [
-      {
-        breakpoint: 1920,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-        },
-      },
-      {
-        breakpoint: 480,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-        },
-      },
-    ],
   };
 
   return (
