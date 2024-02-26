@@ -24,13 +24,13 @@ const boardTextStyle = css`
   font-size: 16px;
   color: #23282e;
   font-family: "Pretendard";
-  font-style: Semibold;
+  font-style: SemiBold;
 `;
 const noticesTextStyle = css`
   font-size: 16px;
   color: #006cff;
   font-family: "Pretendard";
-  font-style: Semibold;
+  font-style: SemiBold;
 `;
 
 const Divider = () => {

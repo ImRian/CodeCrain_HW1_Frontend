@@ -23,7 +23,7 @@
 //   &::placeholder {
 //     color: #8b8e91;
 //     font-family: "Pretendard";
-//     font-style: bold;
+//     font-weight: bold;
 //     font-size: 18px;
 //   }
 // `;

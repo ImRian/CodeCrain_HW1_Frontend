@@ -21,8 +21,8 @@ const likeStyle = css`
   align-items: center;
   justify-content: flex-end;
   gap: 10px;
-  padding: 20px 0  24px 0;
-  border-bottom: 2px solid #006CFF;
+  padding: 20px 0 24px 0;
+  border-bottom: 2px solid #006cff;
   margin-bottom: 40px;
 `;
 
@@ -36,7 +36,7 @@ const backToListBtnStyle = css`
   font-size: 19px;
   transition: all 0.3s;
   color: black;
-  font-weight: medium;
+  font-weight: Medium;
   font-family: Pretendard;
 
   &:hover {
@@ -64,7 +64,7 @@ const titleStyle = css`
   font-size: 22px;
   margin-right: 10px;
   color: #23282e;
-  font-weight: bold;
+  font-weight: Bold;
   font-family: Pretendard;
   margin-bottom: 12px;
 `;

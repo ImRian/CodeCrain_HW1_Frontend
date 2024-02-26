@@ -41,7 +41,7 @@ const ProgressFill = styled.div`
 const SlideIndicator = styled.span`
   color: #ccc;
   &.active {
-    font-weight: bold;
+    font-weight: Bold;
     color: #000;
   }
 `;

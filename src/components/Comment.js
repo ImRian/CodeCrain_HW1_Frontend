@@ -28,7 +28,7 @@ const commentInputStyle = css`
   &::placeholder {
     color: #8b8e91;
     font-family: "Pretendard";
-    font-style: bold;
+    font-weight: bold;
     font-size: 18px;
   }
 `;
@@ -82,7 +82,7 @@ const spacebetweenStyle = css`
 
 const commentText = css`
   color: black;
-  font-weight: bold;
+  font-weight: Bold;
   font-family: Pretendard;
   font-size: 28px;
   margin-right: 10px;
@@ -90,7 +90,7 @@ const commentText = css`
 
 const commentNumeric = css`
   color: #2776e1;
-  font-weight: bold;
+  font-weight: Bold;
   font-family: Pretendard;
   font-size: 28px;
 `;
@@ -113,6 +113,28 @@ const rowDivider = css`
   border-bottom: 1px solid #e8e9e9;
   padding: 10px 0 8px 0;
 `;
+
+const colDivider = css`
+  border-right: 1px solid #d5d6d7;
+  margin-left: 16px;
+  margin-right: 16px;
+  background-color: yellow;
+`;
+
+const nicknameText = css`
+  color: black;
+  font-family: "Pretendard";
+  font-style: SemiBold;
+  font-size: 15px;
+`;
+
+const dateText = css`
+  color: #b5b7b9;
+  font-family: "Pretendard";
+  font-style: Medium;
+  font-size: 15px;
+`;
+
 function Comments({ noticeId, onCommentAdded }) {
   const [comments, setComments] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -244,8 +266,8 @@ function Comments({ noticeId, onCommentAdded }) {
           <div key={comment.id} css={commentBoxStyle}>
             <p css={rowDivider}>{comment.comment}</p>
             <p>
-              {formatNickname(comment.nickname)} (
-              {formatDate(comment.created_date)})
+              <span css={nicknameText}>{formatNickname(comment.nickname)}</span>
+              <span css={colDivider} /><span css={dateText}>{formatDate(comment.created_date)}</span>
             </p>
           </div>
         ))}
