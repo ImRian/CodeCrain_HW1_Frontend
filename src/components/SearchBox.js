@@ -12,7 +12,7 @@ const searchBoxStyle = css`
   margin-top: 16px;
   margin-bottom: 40px;
   display: flex;
-  justify-content: flex-end;;
+  justify-content: flex-end;
   position: relative;
 `;
 
@@ -25,10 +25,9 @@ const inputContainerStyle = css`
 
 const inputStyle = css`
   width: 100%;
-  padding: 8px 40px; 
+  padding: 8px 40px;
   border-radius: 4px;
   border: none;
- 
 `;
 
 const iconStyle = css`
@@ -40,12 +39,12 @@ const iconStyle = css`
 
 const searchIconStyle = css`
   ${iconStyle};
-  left: 10px; 
+  left: 10px;
 `;
 
 const cancelIconStyle = css`
   ${iconStyle};
-  right: 10px; 
+  right: 10px;
 `;
 
 const SearchBox = ({ onSearch }) => {
@@ -72,7 +71,12 @@ const SearchBox = ({ onSearch }) => {
           css={inputStyle}
           placeholder="검색"
         />
-        <img src={cancelIcon} alt="취소" css={cancelIconStyle} onClick={handleClear} />
+        <img
+          src={cancelIcon}
+          alt="취소"
+          css={cancelIconStyle}
+          onClick={handleClear}
+        />
       </div>
     </div>
   );

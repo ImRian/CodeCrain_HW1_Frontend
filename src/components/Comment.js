@@ -1,7 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import React, { useEffect, useState } from "react";
 import { css } from "@emotion/react";
-import CommentBox from "./CommentBox";
+
 
 const formStyle = css`
   background-color: #eef2f8;

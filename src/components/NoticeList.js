@@ -11,27 +11,26 @@ const PageContainerStyle = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 40px 5%; /* 수정된 부분 */
+  padding: 40px 8%; 
   max-width: 1920px;
   min-width: 480px;
-  width: 100%; /* 추가된 부분 */
-  box-sizing: border-box; /* 추가된 부분 */
+  width: 100%; 
+  box-sizing: border-box; 
 `;
 
-// 테이블 스타일
 const Table = styled.table`
   width: 100%;
   border-collapse: collapse;
 
   td {
     border-bottom: 1px solid #ddd;
-    padding: 8px; /* 수정된 부분 */
+    padding: 8px; 
     text-align: center;
   }
 
   .title-cell {
     text-align: left;
-    padding: 8px; /* 추가된 부분 */
+    padding: 8px; 
   }
 
   th {
@@ -83,7 +82,7 @@ const NoticeList = () => {
   const [totalNotices, setTotalNotices] = useState(0);
   const [currentPage, setCurrentPage] = useState(1);
   const [noticesPerPage] = useState(4);
-  const [searchTerm, setSearchTerm] = useState(""); // 검색 용어 상태 관리
+  const [searchTerm, setSearchTerm] = useState("");
   const totalPages = Math.ceil(totalNotices / noticesPerPage);
   const [selectedNoticeId] = useState(null);
   const navigate = useNavigate();
@@ -97,7 +96,7 @@ const NoticeList = () => {
     )
       .then((response) => response.json())
       .then((data) => {
-        setNotices(data.notices.reverse()); // 데이터를 역순으로 정렬
+        setNotices(data.notices.reverse()); 
         setTotalNotices(data.totalNotices);
       })
       .catch((error) => console.error("Error:", error));

@@ -10,15 +10,10 @@ import { css } from "@emotion/react";
 const pageContainerStyle = css`
   display: flex;
   flex-direction: column;
-  align-items: center;
-  padding: 40px 5%; // 동적인 패딩 조정
+  align-items: left;
+  padding: 40px 250px 40px 250px;
   max-width: 1920px;
-  width: 100%; // 너비를 100%로 설정하여 부모 요소에 따라 크기가 조정되도록 함
-  box-sizing: border-box; // 패딩을 포함한 박스 모델 적용
-
-  @media (min-width: 480px) and (max-width: 1920px) {
-    padding: 40px 10%; // 화면 크기에 따라 패딩 조정
-  }
+  min-width: 480px;
 `;
 
 const likeStyle = css`
@@ -29,7 +24,6 @@ const likeStyle = css`
   padding: 20px 0 24px 0;
   border-bottom: 2px solid #006cff;
   margin-bottom: 40px;
-  width: 100%; // 너비 조정
 `;
 
 const backToListBtnStyle = css`
@@ -73,7 +67,6 @@ const titleStyle = css`
   font-weight: Bold;
   font-family: Pretendard;
   margin-bottom: 12px;
-  width: 100%; // 너비 조정
 `;
 
 const dateStyle = css`
@@ -85,8 +78,8 @@ const dateStyle = css`
   letter-spacing: -0.01em;
   padding: 20px 0;
   border-bottom: 1px solid #d5d6d7;
-  width: 100%; // 너비 조정
 `;
+
 const NoticeDetail = () => {
   const [detail, setDetail] = useState(null);
   const [isLiked, setIsLiked] = useState(false);
